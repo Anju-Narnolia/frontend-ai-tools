@@ -13,8 +13,8 @@ RUN npm install
 # Copy the rest of the app
 COPY . .
 
-# Expose port (your Express server runs on 3000)
-EXPOSE 3000
+# Expose port (your Express server runs on 5173)
+EXPOSE 5173
 
 # Start the app
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev", "--", "--host"]

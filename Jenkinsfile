@@ -20,8 +20,8 @@ pipeline {
             steps {
                 script {
                     sh 'docker stop ${APP_NAME} || true && docker rm ${APP_NAME} || true'
-                    // Run frontend on port 3000
-                    sh 'docker run -d -p 3000:3000 --name ${APP_NAME} ${APP_NAME}:latest'
+                    // Run frontend on port 5173
+                    sh 'docker run -d -p 5173:5173 --name ${APP_NAME} ${APP_NAME}:latest'
                 }
             }
         }
