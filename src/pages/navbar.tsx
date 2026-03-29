@@ -2,11 +2,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaRobot } from "react-icons/fa6";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useAuth } from "../context/AuthContext";
 
-const token = localStorage.getItem("token");
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const { user } = useAuth();
     const navigate = useNavigate();
     return (<>
         <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
@@ -43,24 +44,24 @@ export default function Navbar() {
                         >
                             Blogs
                         </span>
-                        {token && (
-                            <Link to="/add-tool">
-                                <button className="px-5 py-2 rounded-full border-2 border-yellow-600 text-yellow-600 font-medium hover:bg-yellow-600 hover:text-white transition-all transform hover:scale-105">
-                                    Add Tool
-                                </button>
-                            </Link>
+                        {user && (
+                            <>
+                                <Link to="/add-tool">
+                                    <button className="px-5 py-2 rounded-full border-2 border-yellow-600 text-yellow-600 font-medium hover:bg-yellow-600 hover:text-white transition-all transform hover:scale-105">
+                                        Add Tool
+                                    </button>
+                                </Link>
+                                <Link to="/profile">
+                                    <button className="px-5 py-2 rounded-full bg-linear-to-r from-yellow-600 to-red-600 text-white font-medium hover:from-yellow-700 hover:to-red-700 transition-all transform hover:scale-105">
+                                        Profile
+                                    </button>
+                                </Link>
+                            </>
                         )}
-                        {!token && (
+                        {!user && (
                             <Link to="/login">
                                 <button className="px-5 py-2 rounded-full bg-linear-to-r from-yellow-600 to-red-600 text-white font-medium hover:from-yellow-700 hover:to-red-700 transition-all transform hover:scale-105">
                                     Login
-                                </button>
-                            </Link>
-                        )}
-                        {token && (
-                            <Link to="/profile">
-                                <button className="px-5 py-2 rounded-full bg-linear-to-r from-yellow-600 to-red-600 text-white font-medium hover:from-yellow-700 hover:to-red-700 transition-all transform hover:scale-105">
-                                    Profile
                                 </button>
                             </Link>
                         )}

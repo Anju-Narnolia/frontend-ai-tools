@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+
 
 interface User {
   _id?: string;
@@ -26,7 +28,7 @@ interface AITool {
 
 export default function Profile() {
   const navigate = useNavigate();
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUserD] = useState<User | null>(null);
   const [tools, setTools] = useState<AITool[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -35,6 +37,7 @@ export default function Profile() {
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
   const API_URL = import.meta.env.VITE_API_URL || "http://16.170.172.53:5000";
   const token = localStorage.getItem("token");
+  const { setUser } = useAuth();
 
   useEffect(() => {
     if (!token) {
@@ -51,7 +54,7 @@ export default function Profile() {
         return res.json();
       })
       .then(data => {
-        setUser(data);
+        setUserD(data);
         setLoading(false);
       })
       .catch(err => {
@@ -82,6 +85,7 @@ export default function Profile() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    setUser(null);
     navigate("/login");
   };
 

@@ -3,6 +3,7 @@ import Home from "./pages/home";
 import AddTool from "./pages/add-tool";
 import EditSnippet from "./pages/edit-snippet";
 import Login from "./pages/login";
+import Register from "./pages/regester";
 import Profile from "./pages/profile";
 import Navbar from "./pages/navbar";
 import Footer from "./pages/footer";
@@ -12,6 +13,7 @@ function App() {
     <Navbar />
     <Routes>
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
       <Route path="/" element={<Home />} />
       <Route path="/add-tool" element={<AddTool />} />
       <Route path="/edit-tool/:id" element={<EditSnippet />} />
