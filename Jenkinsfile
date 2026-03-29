@@ -22,7 +22,7 @@ pipeline {
                     sh 'docker stop ${APP_NAME} || true'
                     sh 'docker rm ${APP_NAME} || true'
                     // Run frontend on port 5173
-                    sh 'docker run -d -p 5173:5173 --name ${APP_NAME} ${APP_NAME}:latest'
+                   sh 'docker run -d -p 5173:5173 --network my-network --name ${APP_NAME} ${APP_NAME}:latest'
                 }
             }
         }
