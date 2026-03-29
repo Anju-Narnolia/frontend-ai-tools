@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Anju-Narnolia/fronted-ai-tools', credentialsId: 'github-creds'
+                git branch: 'main', url: 'https://github.com/Anju-Narnolia/frontend-ai-tools', credentialsId: 'github-creds'
             }
         }
         stage('Build Docker Image') {
@@ -19,7 +19,8 @@ pipeline {
         stage('Run Container') {
             steps {
                 script {
-                    sh 'docker stop ${APP_NAME} || true && docker rm ${APP_NAME} || true'
+                    sh 'docker stop ${APP_NAME} || true'
+                    sh 'docker rm ${APP_NAME} || true'
                     // Run frontend on port 5173
                     sh 'docker run -d -p 5173:5173 --name ${APP_NAME} ${APP_NAME}:latest'
                 }
