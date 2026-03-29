@@ -33,7 +33,7 @@ export default function Profile() {
   const [showmore, setShowmore] = useState(false);
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+  const API_URL = import.meta.env.VITE_API_URL || "http://16.170.172.53:5000";
   const token = localStorage.getItem("token");
 
   useEffect(() => {

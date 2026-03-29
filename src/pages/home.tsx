@@ -55,7 +55,7 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://16.170.172.53:5000';
         const res = await fetch(`${apiUrl}/api/tools/all`);
         const data = await res.json();
         setTools(data);

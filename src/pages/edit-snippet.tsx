@@ -34,7 +34,7 @@ export default function EditTool() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+  const API_URL = import.meta.env.VITE_API_URL || "http://16.170.172.53:5000";
   const token = localStorage.getItem("token");
 
   const categories = [
